@@ -25,3 +25,5 @@ Tecnologías:
 - Lenguaje de programación Python
 - Librería para el juego Pygame
 - Decorador Python para simular AOP
+
+![Game Break Brick](https://d2.alternativeto.net/dist/s/brick-breaker-maniac_928091_full.png?format=jpg&width=1600&height=1600&mode=min&upscale=false)
