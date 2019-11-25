@@ -97,13 +97,14 @@ class Ladrillo(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.material = material
         self.image = load_image(f"{material}.jpg", IMG_DIR, alpha=True)
-        self.image = pygame.transform.scale(self.image,
-                                            (BRICK_WIDTH, BRICK_HEIGHT))
+        self.image = pygame.transform.scale(self.image, (BRICK_WIDTH, BRICK_HEIGHT))
         self.rect = self.image.get_rect()
         self.rect.centerx = posx
         self.rect.centery = posy
         self.eliminado = False
         self.sound_effect = mixer.Sound(f'sound_effect/{material}.wav')
+        self.image_effect = load_image(f"{material}_break.jpg", IMG_DIR, alpha=True)
+        self.image_effect = pygame.transform.scale(self.image_effect, (BRICK_WIDTH*2, BRICK_HEIGHT*4))
 
     def colision(self, objetivo):
         if self.rect.colliderect(objetivo.rect):
@@ -205,14 +206,6 @@ def main():
         # Comprobamos si colisionan los objetos
         bola.colision(jugador1)
 
-        if len(ladrillos) != 0:
-            #ladrillos = colision_ladrillos(bola, ladrillos)
-            for lad in ladrillos:
-                bola.colision(lad)  # La bola cambia de direccion
-                if lad.rect.colliderect(bola):
-                    lad.sound_effect.play()
-                    ladrillos.remove(lad)  # Se elimina el ladrillo
-                    print(lad.material)
 
         # Posibles entradas del teclado y mouse
         for event in pygame.event.get():
@@ -220,7 +213,6 @@ def main():
                 sys.exit(0)
 
             elif event.type == pygame.KEYDOWN:
-
                 if event.key == K_LEFT:
                     jugador1.rect.centerx -= jugador1.speed
                 elif event.key == K_RIGHT:
@@ -234,8 +226,24 @@ def main():
         screen.blit(jugador1.image, jugador1.rect)
 
         if len(ladrillos) != 0:
+            #ladrillos = colision_ladrillos(bola, ladrillos)
             for lad in ladrillos:
-                screen.blit(lad.image, lad.rect)
+                bola.colision(lad)  # La bola cambia de direccion
+                #mostrar los ladrillos
+                screen.blit(lad.image, lad.rect) 
+                
+                if lad.rect.colliderect(bola):
+                    lad.sound_effect.play()
+                    #cambias el ladrillo por su efecto      
+                    #Agregar aqui el bucle
+                    screen.blit(lad.image_effect, lad.rect) 
+                    clock.tick(7)
+                    lad.eliminado = True
+                
+                # Eliminar al ladrillo que colisiono
+                if lad.eliminado:
+                    ladrillos.remove(lad)
+
 
         pygame.display.flip()
         clock.tick(60)
