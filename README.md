@@ -1,16 +1,7 @@
-# TopSoftware-AOP
+
+# APLICACIÓN AOP EN EL JUEGO BREAK BRICK
 
 Game Break Brick with decorators in python
-
-## TÓPICOS DE SOFTWARE 
-# PROPUESTA DE APLICACIÓN AOP
-
-Integrantes:
-
-- Ponce Pinedo, Victor
-- Lazaro Camasca, Edson
-- Espinoza Mansilla, Carlos
-- Ruegg Yupa, Josias
 
 __Propuesta:__
 
@@ -26,4 +17,23 @@ Tecnologías:
 - Librería para el juego Pygame
 - Decorador Python para simular AOP
 
-![Game Break Brick](https://d2.alternativeto.net/dist/s/brick-breaker-maniac_928091_full.png?format=jpg&width=1600&height=1600&mode=min&upscale=false)
+
+## ¿Como reproducir el juego?
+
+1. Instalar pygame
+- $ pip install pygame
+
+2. Descargar el Repositorio
+
+3. Ubicarse dentro del repositorio 
+
+4. Ejecutar el archivo python
+- $ python game.py 
+
+
+Autores:
+
+- Ponce Pinedo, Victor
+- Lazaro Camasca, Edson
+- Espinoza Mansilla, Carlos
+- Ruegg Yupa, Josias
