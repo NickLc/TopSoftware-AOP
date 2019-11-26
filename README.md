@@ -31,6 +31,10 @@ Tecnologías:
 - $ python game.py 
 
 
+### Demo
+
+https://www.youtube.com/watch?v=II6a2kncv8M&feature=youtu.be
+
 Autores:
 
 - Ponce Pinedo, Victor
